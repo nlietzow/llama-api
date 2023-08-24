@@ -6,15 +6,15 @@ ROOT_DIR = pathlib.Path(__file__).parent.parent.parent
 
 
 class Settings(BaseSettings):
-    model_name: str = "llama-2-7b-chat"
+    llama_model_name: str = "llama-2-7b-chat"
     max_seq_len: int = 512
     max_batch_size: int = 4
 
     @property
     def ckpt_dir(self) -> str:
-        path = ROOT_DIR / self.model_name
+        path = ROOT_DIR / self.llama_model_name
         if not path.exists():
-            raise ValueError(f"Model {self.model_name} not found")
+            raise ValueError(f"Model {self.llama_model_name} not found")
 
         return str(path.resolve())
 
