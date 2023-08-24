@@ -6,7 +6,8 @@ import os
 import sys
 import time
 from pathlib import Path
-from typing import List, Literal, Optional, Tuple, TypedDict
+from typing import List, Literal, Optional, Tuple
+from typing_extensions import TypedDict
 
 import torch
 import torch.nn.functional as F
