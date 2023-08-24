@@ -7,6 +7,7 @@ ENV NPROC_PER_NODE=1
 WORKDIR /code
 
 COPY llama llama
+COPY tokenizer.model tokenizer.model
 COPY requirements.txt setup.py ./
 
 RUN pip install --no-cache-dir --upgrade pip && \
