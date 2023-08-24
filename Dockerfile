@@ -1,8 +1,6 @@
 FROM pytorch/pytorch:2.0.1-cuda11.7-cudnn8-runtime
 
-ENV LOCAL_RANK=0
-ENV WORLD_SIZE=1
-ENV NPROC_PER_NODE=1
+ENV RANK=0
 
 WORKDIR /code
 
