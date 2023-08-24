@@ -1,5 +1,5 @@
 from llama import Llama
-from llama.application.settings import settings
+from llama.application import settings
 from llama.generation import Dialog, ChatPrediction
 
 generator = Llama.build(
