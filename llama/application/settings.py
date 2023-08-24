@@ -2,7 +2,7 @@ import pathlib
 
 from pydantic import BaseSettings
 
-ROOT_DIR = pathlib.Path(__file__).parent.parent
+ROOT_DIR = pathlib.Path(__file__).parent.parent.parent
 
 
 class Settings(BaseSettings):
