@@ -12,4 +12,4 @@ COPY requirements.txt setup.py ./
 RUN pip install --no-cache-dir --upgrade pip && \
     pip install -e .
 
-CMD ["uvicorn", "llama.main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["uvicorn", "llama.app:app", "--host", "0.0.0.0", "--port", "8000"]
