@@ -2,3 +2,7 @@ torch
 fairscale
 fire
 sentencepiece
+starlette
+fastapi
+uvicorn
+pydantic
