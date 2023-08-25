@@ -1,7 +1,7 @@
 import pathlib
 
-max_seq_len: int = 1024
-max_batch_size: int = 4
+max_seq_len: int = 256
+max_batch_size: int = 2
 llama_model_name: str = "llama-2-7b-chat"
 
 ROOT_DIR = pathlib.Path(__file__).parent.parent.parent
