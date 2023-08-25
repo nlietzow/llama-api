@@ -8,7 +8,7 @@ from llama.generation import Dialog, ChatPrediction
 app = FastAPI(debug=True)
 
 
-@app.post("/get_first_n_tokens", dependencies=[Depends(verify_token)])
+@app.post("/get_num_tokens", dependencies=[Depends(verify_token)])
 async def get_num_tokens_of_text(
     text: str = Body(example="This is an example."),
 ) -> int:
