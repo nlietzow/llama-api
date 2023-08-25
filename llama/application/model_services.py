@@ -1,6 +1,12 @@
+import gc
+import torch
+
 from llama import Llama
 from llama.application import settings
 from llama.generation import Dialog, ChatPrediction
+
+gc.collect()
+torch.cuda.empty_cache()
 
 generator = Llama.build(
     ckpt_dir=settings.ckpt_dir,
