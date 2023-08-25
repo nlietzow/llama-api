@@ -1,19 +1,17 @@
 from pydantic import BaseModel, field_validator
 
 from llama.application import settings
-from llama.generation import Dialog
+from llama.generation import Dialog, Message
 
-example_dialog = [
-    [
-        {
-            "role": "system",
-            "content": "Always answer with emojis",
-        },
-        {
-            "role": "user",
-            "content": "How to go from Beijing to NY?",
-        },
-    ],
+example_dialog: Dialog = [
+    Message(
+        role="system",
+        content="Always answer with emojis",
+    ),
+    Message(
+        role="user",
+        content="How to go from Beijing to NY?",
+    ),
 ]
 
 
@@ -31,7 +29,7 @@ class InferenceInputModel(BaseModel):
     class Config:
         schema_extra = {
             "example": {
-                "dialogs": example_dialog,
+                "dialogs": [example_dialog],
             }
         }
 
