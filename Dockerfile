@@ -12,4 +12,4 @@ RUN pip install --no-cache-dir --upgrade pip && \
     pip install -e .
 
 
-CMD ["torchrun", "--nproc_per_node", "4", "llama/app.py"]
+CMD ["torchrun", "--nproc_per_node", "1", "llama/app.py"]
