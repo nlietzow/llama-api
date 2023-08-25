@@ -1,9 +1,11 @@
 import gc
-import torch
 
-from llama import Llama
+import torch
+from typing_extensions import TypedDict
+
+
 from llama.application import settings
-from llama.generation import Dialog, ChatPrediction
+from llama.generation import Dialog, ChatPrediction, Llama
 
 gc.collect()
 torch.cuda.empty_cache()
@@ -16,13 +18,21 @@ generator = Llama.build(
 )
 
 
-def get_num_tokens(text: str) -> int:
-    return len(generator.tokenizer.encode(text, bos=False, eos=False))
+class TextWithNumTokens(TypedDict):
+    text: str
+    num_tokens: int
 
 
-def get_first_n_tokens(text: str, n: int) -> str:
+def get_num_tokens(text: str) -> TextWithNumTokens:
     tokens = generator.tokenizer.encode(text, bos=False, eos=False)
-    return generator.tokenizer.decode(tokens[:n])
+    return TextWithNumTokens(text=text, num_tokens=len(tokens))
+
+
+def get_first_n_tokens(text: str, n: int) -> TextWithNumTokens:
+    tokens = generator.tokenizer.encode(text, bos=False, eos=False)
+    tokens = tokens[:n]
+    text_max_n_tokens = generator.tokenizer.decode(tokens)
+    return TextWithNumTokens(text=text_max_n_tokens, num_tokens=len(tokens))
 
 
 def predict(

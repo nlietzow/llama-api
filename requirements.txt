@@ -5,3 +5,4 @@ sentencepiece
 starlette
 fastapi
 uvicorn
+pydantic

@@ -1,3 +1,5 @@
+from pydantic import BaseModel
+
 example_dialog = [
     [
         {
@@ -10,3 +12,26 @@ example_dialog = [
         },
     ],
 ]
+
+
+class TextInputModel(BaseModel):
+    text: str
+
+    class Config:
+        schema_extra = {
+            "example": {
+                "text": "This is an example.",
+            }
+        }
+
+
+class TextWithNumTokensModel(TextInputModel):
+    num_tokens: int
+
+    class Config:
+        schema_extra = {
+            "example": {
+                "text": "This is an example.",
+                "num_tokens": 5,
+            }
+        }
