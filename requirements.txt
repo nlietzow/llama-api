@@ -6,3 +6,4 @@ starlette
 fastapi
 uvicorn
 pydantic
+tenacity
