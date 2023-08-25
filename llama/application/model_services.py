@@ -10,6 +10,15 @@ generator = Llama.build(
 )
 
 
+def get_num_tokens(text: str) -> int:
+    return len(generator.tokenizer.encode(text, bos=False, eos=False))
+
+
+def get_first_n_tokens(text: str, n: int) -> str:
+    tokens = generator.tokenizer.encode(text, bos=False, eos=False)
+    return generator.tokenizer.decode(tokens[:n])
+
+
 def predict(
     dialogs: list[Dialog],
     *,

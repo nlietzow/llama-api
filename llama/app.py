@@ -2,10 +2,25 @@ from fastapi import FastAPI, Depends, Body, Query
 
 from llama.application.authenticator import verify_token
 from llama.application import examples
-from llama.application.model_services import predict
+from llama.application.model_services import predict, get_first_n_tokens, get_num_tokens
 from llama.generation import Dialog, ChatPrediction
 
 app = FastAPI(debug=True)
+
+
+@app.post("/get_first_n_tokens", dependencies=[Depends(verify_token)])
+async def get_num_tokens_of_text(
+    text: str = Body(example="This is an example."),
+) -> int:
+    return get_num_tokens(text=text)
+
+
+@app.post("/get_first_n_tokens", dependencies=[Depends(verify_token)])
+async def get_first_n_tokens_of_text(
+    n: int = Query(example=100),
+    text: str = Body(example="This is an example."),
+) -> str:
+    return get_first_n_tokens(text=text, n=n)
 
 
 @app.post("/predict", dependencies=[Depends(verify_token)])
